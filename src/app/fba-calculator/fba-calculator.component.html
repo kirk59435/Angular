@@ -1,0 +1,16 @@
+<form>
+    <label>Weight:</label><br>
+    <input type="number" name="weight" [(ngModel)]='weight' required><br>
+    <label>Height:</label><br>
+    <input type="number" name="height" [(ngModel)]='height' required><br>
+    <label>Length:</label><br>
+    <input type="number" name="length" [(ngModel)]='length' required><br>
+    <label>Width:</label><br>
+    <input type="number" name="width" [(ngModel)]='width' required><br>
+    <input type="checkbox" name="isCloth" [(ngModel)]='isCloth' >Clothing Items<br>
+    <input type="button" value="Calaulate" (click)="FbaCal()"><br><br>
+</form>
+<div>
+  <label>Result:</label><br>
+    <input type="number" name="price" [(ngModel)]='price' disabled>
+</div>
