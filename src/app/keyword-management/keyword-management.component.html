@@ -1,3 +1,122 @@
-<p>
-  keyword-management works!
-</p>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class='row' align='center'>
+    <div class="column1">
+        <label>Keywords</label><br>
+        <input type="button" (click)="editKey()" *ngIf="!keyword.editable" value='Edit keyword'><br>
+        <textarea rows='20' cols="60" name='keyword' [(ngModel)]='keyword.value' (keyup)='saveKeyword()' (disabled)='!keyword.editable'></textarea>
+        <br><span>{{keyword.length}}</span>
+        <br>
+        <br>
+        <div>
+            <label>Option</label><br>
+            <input type='checkbox' name='option' [(ngModel)]='RD'>Remove duplicates
+            <input type='checkbox' name='option' [(ngModel)]='MP'>Maintain phrases
+            <br>
+            <input type="checkbox" name="option" [(ngModel)]="RSW">Remove single word
+            <input type="checkbox" name="option" [(ngModel)]="RSL">Remove single letter
+            <br>
+            <input type="checkbox" name="option" [(ngModel)]="OWPL">One word/pharse per line
+            <br>
+            <button (click)='restore()'>Restore</button>
+            <button (click)='process()'>Process</button>
+        </div>
+        <div *ngIf="!keyword.editable">
+            <label>Used Key Word</label><br>
+            <textarea rows="20" cols='60' name='used' [(ngModel)]='used' disabled></textarea>
+        </div>
+    </div>
+    <div class="column2">
+        <div>
+            <label>Title</label>
+        <br>
+        <select ng-change="format(this.value,this.name)" name="title">
+            <option value="initial">Select a format</option>
+            <option>ALL CAPS</option>
+            <option>all lowercase</option>
+            <option>First Letter Caps</option>
+            <option>Sentence caps</option>
+        </select>
+        <br>
+            <textarea rows="10" maxlength={{title.max}} cols='80' name='title' [(ngModel)]='title.value' (keyup)='detectInput()'></textarea>
+            <br>
+            <span>{{title.length}}</span>
+            <i class="material-icons" (click)='changeLimit("title")' style="font-size:16px;color:blue">mode_edit</i>
+            <br>
+            <br>
+        </div>
+        <div>
+            <label>Description</label>
+        <br>
+        <select ng-change="format(this.value,this.name)" name="description">
+            <option value="initial">Select a format</option>
+            <option>ALL CAPS</option>
+            <option>all lowercase</option>
+            <option>First Letter Caps</option>
+            <option>Sentence caps</option>
+        </select>
+        <br>
+            <textarea rows="25" maxlength={{description.max}} cols='80' name='description' [(ngModel)]='description.value' (keyup)='detectInput()'></textarea>
+            <br>
+            <span>{{description.length}}</span>
+            <i class="material-icons" (click)='changeLimit("description")' style="font-size:16px;color:blue">mode_edit</i>
+        </div>
+        <!-- <div>
+            <div style='display: none' id='extraDiv1'>
+                <br>
+                <label>Extra Description</label>
+                <select onChange="format(this.value,this.name)" name="extra1">
+                    <option value="initial">Select a format</option>
+                    <option>ALL CAPS</option>
+                    <option>all lowercase</option>
+                    <option>First Letter Caps</option>
+                    <option>Sentence caps</option>
+                </select>
+                <br>
+                <textarea rows="10" maxlength="500" cols='80' id='extra1' onInput='detectInput()'></textarea>
+                <br>
+                <span id="Ecount1">Words: 0, Characters: 0/500</span>
+                <i class="material-icons" onClick='changeLimit("extra1")' style="font-size:16px;color:blue">mode_edit</i>
+            </div>
+            <div style='display: none' id='extraDiv2'>
+                <br>
+                <label>Extra Description</label>
+                <select onChange="format(this.value,this.name)" name="extra2">
+                    <option value="initial">Select a format</option>
+                    <option>ALL CAPS</option>
+                    <option>all lowercase</option>
+                    <option>First Letter Caps</option>
+                    <option>Sentence caps</option>
+                </select>
+                <br>
+                <textarea rows="10" maxlength="500" cols='80' id='extra2' onInput='detectInput()'></textarea>
+                <br>
+                <span id="Ecount2">Words: 0, Characters: 0/500</span>
+                <i class="material-icons" onClick='changeLimit("extra2")' style="font-size:16px;color:blue">mode_edit</i>
+            </div>
+            <div style='display: none' id='extraDiv3'>
+                <br>
+                <label>Extra Description</label>
+                <select onChange="format(this.value,this.name)" name="extra3">
+                    <option value="initial">Select a format</option>
+                    <option>ALL CAPS</option>
+                    <option>all lowercase</option>
+                    <option>First Letter Caps</option>
+                    <option>Sentence caps</option>
+                </select>
+                <br>
+                <textarea rows="10" maxlength="500" cols='80' id='extra3' onInput='detectInput()'></textarea>
+                <br>
+                <span id="Ecount3">Words: 0, Characters: 0/500</span>
+                <i class="material-icons" onClick='changeLimit("extra3")' style="font-size:16px;color:blue">mode_edit</i>
+            </div>
+            <button type="button" class="btn btn-default btn-sm" onClick="showBox()" id="addButton">
+                <span class="glyphicon glyphicon-plus-sign"></span> Add Extra Describtion
+            </button>                    
+        </div> -->
+    </div>
+  </div>
+</body>
+

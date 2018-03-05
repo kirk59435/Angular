@@ -1,0 +1,17 @@
+.column1 {
+    position:fixed; 
+    float: left; 
+    width: 50%;
+}
+.column2 {
+    float: right; 
+    width: 50%;
+    margin-right: 5%; 
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
