@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { FbaCalculatorComponent } from './fba-calculator/fba-calculator.component';
-import { KeywordManagementComponent } from './keyword-management/keyword-management.component';
+import { HomeComponent } from './components/home/home.component';
+import { FbaCalculatorComponent } from './components/fba-calculator/fba-calculator.component';
+import { KeywordManagementComponent } from './components/keyword-management/keyword-management.component';
 
 const routes: Routes = [
   {
